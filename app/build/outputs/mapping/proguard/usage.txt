@@ -10081,9 +10081,7 @@ com.google.android.gms.common.data.zac
 com.google.android.gms.common.images.ImageManager$ImageReceiver
 com.google.android.gms.common.images.ImageManager$OnImageLoadedListener
 com.google.android.gms.common.images.ImageManager
-com.google.android.gms.common.images.Size:
-    public static com.google.android.gms.common.images.Size parseSize(java.lang.String)
-    private static java.lang.NumberFormatException zaa(java.lang.String)
+com.google.android.gms.common.images.Size
 com.google.android.gms.common.images.WebImage
 com.google.android.gms.common.images.zaa
 com.google.android.gms.common.images.zab
@@ -17795,54 +17793,8 @@ com.google.mlkit.vision.demo.BuildConfig:
 com.google.mlkit.vision.demo.CameraSource$1
 com.google.mlkit.vision.demo.CameraSource$CameraPreviewCallback
 com.google.mlkit.vision.demo.CameraSource$FrameProcessingRunnable
-com.google.mlkit.vision.demo.CameraSource$SizePair:
-    public void <init>(com.google.android.gms.common.images.Size,com.google.android.gms.common.images.Size)
-com.google.mlkit.vision.demo.CameraSource:
-    private static final float ASPECT_RATIO_TOLERANCE
-    public static final int CAMERA_FACING_BACK
-    public static final int CAMERA_FACING_FRONT
-    public static final int DEFAULT_REQUESTED_CAMERA_PREVIEW_HEIGHT
-    public static final int DEFAULT_REQUESTED_CAMERA_PREVIEW_WIDTH
-    private static final int DUMMY_TEXTURE_NAME
-    public static final int IMAGE_FORMAT
-    private static final boolean REQUESTED_AUTO_FOCUS
-    private static final float REQUESTED_FPS
-    private static final java.lang.String TAG
-    protected android.app.Activity activity
-    private final java.util.IdentityHashMap bytesToByteBuffer
-    private android.hardware.Camera camera
-    private android.graphics.SurfaceTexture dummySurfaceTexture
-    private int facing
-    private com.google.mlkit.vision.demo.VisionImageProcessor frameProcessor
-    private final com.google.mlkit.vision.demo.GraphicOverlay graphicOverlay
-    private com.google.android.gms.common.images.Size previewSize
-    private final com.google.mlkit.vision.demo.CameraSource$FrameProcessingRunnable processingRunnable
-    private java.lang.Thread processingThread
-    private final java.lang.Object processorLock
-    private int rotationDegrees
-    public void <init>(android.app.Activity,com.google.mlkit.vision.demo.GraphicOverlay)
-    static synthetic com.google.mlkit.vision.demo.CameraSource$FrameProcessingRunnable access$100(com.google.mlkit.vision.demo.CameraSource)
-    static synthetic java.util.IdentityHashMap access$200(com.google.mlkit.vision.demo.CameraSource)
-    static synthetic java.lang.Object access$300(com.google.mlkit.vision.demo.CameraSource)
-    static synthetic int access$400(com.google.mlkit.vision.demo.CameraSource)
-    static synthetic com.google.android.gms.common.images.Size access$500(com.google.mlkit.vision.demo.CameraSource)
-    static synthetic com.google.mlkit.vision.demo.GraphicOverlay access$600(com.google.mlkit.vision.demo.CameraSource)
-    static synthetic com.google.mlkit.vision.demo.VisionImageProcessor access$700(com.google.mlkit.vision.demo.CameraSource)
-    static synthetic android.hardware.Camera access$800(com.google.mlkit.vision.demo.CameraSource)
-    private void cleanScreen()
-    private android.hardware.Camera createCamera()
-    private byte[] createPreviewBuffer(com.google.android.gms.common.images.Size)
-    public int getCameraFacing()
-    private static int getIdForRequestedCamera(int)
-    public com.google.android.gms.common.images.Size getPreviewSize()
-    public void release()
-    private static int[] selectPreviewFpsRange(android.hardware.Camera,float)
-    public synchronized void setFacing(int)
-    public void setMachineLearningFrameProcessor(com.google.mlkit.vision.demo.VisionImageProcessor)
-    private void setRotation(android.hardware.Camera,android.hardware.Camera$Parameters,int)
-    public synchronized com.google.mlkit.vision.demo.CameraSource start()
-    public synchronized com.google.mlkit.vision.demo.CameraSource start(android.view.SurfaceHolder)
-    public synchronized void stop()
+com.google.mlkit.vision.demo.CameraSource$SizePair
+com.google.mlkit.vision.demo.CameraSource
 com.google.mlkit.vision.demo.CameraSourcePreview$1
 com.google.mlkit.vision.demo.CameraSourcePreview$SurfaceCallback
 com.google.mlkit.vision.demo.CameraSourcePreview
@@ -17878,6 +17830,7 @@ com.google.mlkit.vision.demo.VisionImageProcessor:
     public abstract void processBitmap(android.graphics.Bitmap,com.google.mlkit.vision.demo.GraphicOverlay)
     public abstract void processByteBuffer(java.nio.ByteBuffer,com.google.mlkit.vision.demo.FrameMetadata,com.google.mlkit.vision.demo.GraphicOverlay)
 com.google.mlkit.vision.demo.java.CameraXLivePreviewActivity:
+    private static final java.lang.String JUST_CAMERA
     private static final int PERMISSION_REQUESTS
     private static final java.lang.String POSE_DETECTION
     private static final java.lang.String STATE_SELECTED_MODEL
@@ -18155,6 +18108,7 @@ com.google.mlkit.vision.pose.PoseLandmark:
     public static final int RIGHT_SHOULDER
     public static final int RIGHT_THUMB
     public static final int RIGHT_WRIST
+    public float getInFrameLikelihood()
     public int getLandmarkType()
 com.google.mlkit.vision.pose.R
 com.google.mlkit.vision.pose.accurate.AccuratePoseDetectorOptions$Builder:
@@ -25781,6 +25735,8 @@ com.google.mlkit.vision.common.internal.ImageUtils:
     private static final com.google.android.gms.common.internal.GmsLogger zza
 com.google.mlkit.vision.common.internal.VisionCommonRegistrar:
     public static final synthetic int zza
+com.google.mlkit.vision.demo.java.posedetector.PoseGraphic:
+    private final boolean showInFrameLikelihood
 com.google.mlkit.vision.demo.java.posedetector.classification.PoseSample:
     private final java.lang.String name
 com.google.mlkit.vision.face.internal.FaceDetectorImpl:
@@ -25826,6 +25782,7 @@ com.google.mlkit.vision.objects.defaults.internal.zza:
     private final com.google.mlkit.common.sdkinternal.ExecutorSelector zzc
 com.google.mlkit.vision.pose.PoseLandmark:
     private final int zza
+    private final float zzd
 com.google.mlkit.vision.pose.internal.PoseRegistrar:
     public static final synthetic int zza
 com.google.mlkit.vision.segmentation.SegmentationMask:

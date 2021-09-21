@@ -16,6 +16,7 @@
 
 package com.google.mlkit.vision.demo.java.posedetector;
 
+import static java.lang.Math.atan2;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -81,6 +82,20 @@ public class PoseGraphic extends Graphic {
     rightPaint = new Paint();
     rightPaint.setStrokeWidth(STROKE_WIDTH);
     rightPaint.setColor(Color.YELLOW);
+  }
+  static float getAngle(PoseLandmark firstPoint, PoseLandmark midPoint, PoseLandmark lastPoint) {
+    double result =
+            Math.toDegrees(
+                    atan2(lastPoint.getPosition().y - midPoint.getPosition().y,
+                            lastPoint.getPosition().x - midPoint.getPosition().x)
+                            - atan2(firstPoint.getPosition().y - midPoint.getPosition().y,
+                            firstPoint.getPosition().x - midPoint.getPosition().x));
+    result = Math.abs(result); // Angle should never be negative
+    if (result > 180) {
+      result = (360.0 - result); // Always get the acute representation of the angle
+    }
+
+    return (float)result;
   }
 
   @Override
@@ -187,7 +202,12 @@ public class PoseGraphic extends Graphic {
     drawLine(canvas, rightAnkle, rightHeel, rightPaint);
     drawLine(canvas, rightHeel, rightFootIndex, rightPaint);
 
+    //custom
+    drawLine(canvas, leftHip,leftAnkle,leftPaint);
+    drawLine(canvas, rightHip,rightAnkle,rightPaint);
+
     // Draw inFrameLikelihood for all points
+    /*
     if (showInFrameLikelihood) {
       for (PoseLandmark landmark : landmarks) {
         canvas.drawText(
@@ -197,6 +217,21 @@ public class PoseGraphic extends Graphic {
             whitePaint);
       }
     }
+     */
+
+
+    canvas.drawText(
+            String.format(Locale.US , "%.2f",getAngle(leftHip,leftKnee,leftAnkle)),
+            translateX(leftKnee.getPosition().x),
+            translateY(leftKnee.getPosition().y),
+            whitePaint);
+    canvas.drawText(
+            String.format(Locale.US , "%.2f",getAngle(rightHip,rightKnee,rightAnkle)),
+            translateX(rightKnee.getPosition().x),
+            translateY(rightKnee.getPosition().y),
+            whitePaint);
+
+
   }
 
     void drawPoint(Canvas canvas, PoseLandmark landmark, Paint paint) {

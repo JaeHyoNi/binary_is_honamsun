@@ -23,10 +23,13 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.Build.VERSION_CODES;
+import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceCategory;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+
+import android.preference.PreferenceFragment;
 import android.util.Size;
 import androidx.annotation.StringRes;
 import androidx.camera.core.CameraSelector;
@@ -36,9 +39,15 @@ import java.util.List;
 
 /** Configures CameraX live preview demo settings. */
 @RequiresApi(VERSION_CODES.LOLLIPOP)
-public class CameraXLivePreviewPreferenceFragment extends LivePreviewPreferenceFragment {
-
+public class CameraXLivePreviewPreferenceFragment extends PreferenceFragment {
   @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    addPreferencesFromResource(R.xml.preference_live_preview_quickstart);
+    setUpCameraPreferences();
+  }
+
   void setUpCameraPreferences() {
     PreferenceCategory cameraPreference =
         (PreferenceCategory) findPreference(getString(R.string.pref_category_key_camera));

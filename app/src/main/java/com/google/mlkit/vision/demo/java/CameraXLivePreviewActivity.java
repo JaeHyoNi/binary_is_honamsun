@@ -72,6 +72,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   private static final String TAG = "CameraXLivePreview";
   private static final int PERMISSION_REQUESTS = 1;
 
+  private static final String JUST_CAMERA = "Just Camera";
   private static final String POSE_DETECTION = "Pose Detection";
   private static final String STATE_SELECTED_MODEL = "selected_model";
 
@@ -121,6 +122,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     Spinner spinner = findViewById(R.id.spinner);
     List<String> options = new ArrayList<>();
     options.add(POSE_DETECTION);
+    options.add(JUST_CAMERA);
 
     // Creating adapter for spinner
     ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, R.layout.spinner_style, options);
@@ -280,7 +282,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
           boolean shouldShowInFrameLikelihood =
               PreferenceUtils.shouldShowPoseDetectionInFrameLikelihoodLivePreview(this);
           boolean visualizeZ = PreferenceUtils.shouldPoseDetectionVisualizeZ(this);
-
           boolean rescaleZ = PreferenceUtils.shouldPoseDetectionRescaleZForVisualization(this);
           boolean runClassification = PreferenceUtils.shouldPoseDetectionRunClassification(this);
           Log.d(TAG,"setting:" +visualizeZ + " " + rescaleZ + " " + runClassification);
@@ -330,6 +331,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             }
             needUpdateGraphicOverlayImageSourceInfo = false;
           }
+          //이부분이 카메라 실행시키는 부분
           try {
             imageProcessor.processImageProxy(imageProxy, graphicOverlay);
           } catch (MlKitException e) {
@@ -337,8 +339,11 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT)
                 .show();
           }
-        });
 
+        });
+    //이부분 제거하면 detector 사라지네
+    //analysisusecase에서 imageprocessor하고 graphic씌우고 여기서 그걸 업로드 해주나 봄
+    //cameraselector가 뭐지
     cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, analysisUseCase);
   }
 

@@ -127,6 +127,7 @@ public class PoseDetectorProcessor
                   poseClassifierProcessor = new PoseClassifierProcessor(context, isStreamMode);
                 }
                 classificationResult = poseClassifierProcessor.getPoseResult(pose);
+                System.out.println(classificationResult);
               }
               return new PoseWithClassification(pose, classificationResult);
             });
