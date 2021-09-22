@@ -37,6 +37,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -61,6 +62,7 @@ import com.google.mlkit.vision.demo.preference.SettingsActivity;
 import com.google.mlkit.vision.pose.PoseDetectorOptionsBase;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.mlkit.vision.demo.java.MyGlobal;
 
 /** Live preview demo app for ML Kit APIs using CameraX. */
 @KeepName
@@ -84,6 +86,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   @Nullable private ImageAnalysis analysisUseCase;
   @Nullable private VisionImageProcessor imageProcessor;
   private boolean needUpdateGraphicOverlayImageSourceInfo;
+
+
 
   private String selectedModel = POSE_DETECTION;
   private int lensFacing = CameraSelector.LENS_FACING_FRONT;
@@ -110,6 +114,9 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     cameraSelector = new CameraSelector.Builder().requireLensFacing(lensFacing).build();
 
     setContentView(R.layout.activity_vision_camerax_live_preview);
+
+
+
     previewView = findViewById(R.id.preview_view);
     if (previewView == null) {
       Log.d(TAG, "previewView is null");
@@ -166,7 +173,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     super.onSaveInstanceState(bundle);
     bundle.putString(STATE_SELECTED_MODEL, selectedModel);
   }
-
+  //해당 부분에서 camera mode select가 된다. 동기화가 되어있구만
   @Override
   public synchronized void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
     // An item was selected. You can retrieve the selected item using
@@ -262,7 +269,10 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, previewUseCase);
   }
 
+
+  //private에서 바꿈
   private void bindAnalysisUseCase() {
+    //ProgressBar progress = (ProgressBar) findViewById(R.id.progress);
     if (cameraProvider == null) {
       return;
     }
@@ -275,8 +285,10 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     //이부분이 실질적으로 detect하는부분임
     //옵션, Z축 저건 다 환경설정의 옵션
     try {
+      System.out.println("이부분이 반복이 되나?");
       switch (selectedModel) {
         case POSE_DETECTION:
+          //모델 옵션설정
           PoseDetectorOptionsBase poseDetectorOptions =
               PreferenceUtils.getPoseDetectorOptionsForLivePreview(this);
           boolean shouldShowInFrameLikelihood =
@@ -285,6 +297,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
           boolean rescaleZ = PreferenceUtils.shouldPoseDetectionRescaleZForVisualization(this);
           boolean runClassification = PreferenceUtils.shouldPoseDetectionRunClassification(this);
           Log.d(TAG,"setting:" +visualizeZ + " " + rescaleZ + " " + runClassification);
+
+          //이미지 프로세서 설정
           imageProcessor =
               new PoseDetectorProcessor(
                   this,
@@ -314,6 +328,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     analysisUseCase = builder.build();
 
     needUpdateGraphicOverlayImageSourceInfo = true;
+
+    //이놈이 계속 실행이 된다
     analysisUseCase.setAnalyzer(
         // imageProcessor.processImageProxy will use another thread to run the detection underneath,
         // thus we can just runs the analyzer itself on main thread.
@@ -332,13 +348,17 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
             needUpdateGraphicOverlayImageSourceInfo = false;
           }
           //이부분이 카메라 실행시키는 부분
+          //반복되는것도 이부분이넹
           try {
+            //processImageProxy() -> requestDetectImage() -> processImageProxy() -> detectInImage() -> getPoseResult() -> 문자열 생성
             imageProcessor.processImageProxy(imageProxy, graphicOverlay);
+            //progress.setProgress(MyGlobal.getInstance().getREP());
           } catch (MlKitException e) {
             Log.e(TAG, "Failed to process image. Error: " + e.getLocalizedMessage());
             Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT)
                 .show();
           }
+
 
         });
     //이부분 제거하면 detector 사라지네
@@ -347,6 +367,8 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     cameraProvider.bindToLifecycle(/* lifecycleOwner= */ this, cameraSelector, analysisUseCase);
   }
 
+
+  //아래에는 다 권한 관련 함수들
   private String[] getRequiredPermissions() {
     try {
       PackageInfo info =

@@ -73,7 +73,7 @@ public class CameraSource {
 
   private Camera camera;
 
-  private int facing = CAMERA_FACING_FRONT;
+  private int facing = CAMERA_FACING_BACK;
 
   /** Rotation of the device, and thus the associated preview images captured from the device. */
   private int rotationDegrees;
@@ -507,6 +507,7 @@ public class CameraSource {
     Camera.getCameraInfo(cameraId, cameraInfo);
 
     int displayAngle;
+    //이부분이 초기 설정 값
     if (cameraInfo.facing == CameraInfo.CAMERA_FACING_FRONT) {
       this.rotationDegrees = (cameraInfo.orientation + degrees) % 360;
       displayAngle = (360 - this.rotationDegrees) % 360; // compensate for it being mirrored

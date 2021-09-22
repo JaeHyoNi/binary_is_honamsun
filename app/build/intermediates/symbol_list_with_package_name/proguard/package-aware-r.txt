@@ -1063,6 +1063,8 @@ id percent
 id position
 id postLayout
 id preview_view
+id progress
+id progressBar16
 id progress_circular
 id progress_horizontal
 id radio

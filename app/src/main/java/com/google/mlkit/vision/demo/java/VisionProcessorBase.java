@@ -230,6 +230,7 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
               mlImage,
               graphicOverlay,
               /* originalCameraImage= */ bitmap,
+              //fps보여주는 부분
               /* shouldShowFps= */ true,
               frameStartMs)
           // When the image is from CameraX analysis use case, must call image.close() on received
@@ -271,6 +272,7 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
       boolean shouldShowFps,
       long frameStartMs) {
     return setUpListener(
+            //detectInImage를 통해서 result를 받아왔었음
         detectInImage(image), graphicOverlay, originalCameraImage, shouldShowFps, frameStartMs);
   }
 
@@ -326,10 +328,19 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
               }
 
               graphicOverlay.clear();
+
               if (originalCameraImage != null) {
+                //graphicOverlay.add(new CameraImageGraphic(graphicOverlay, originalCameraImage));
                 graphicOverlay.add(new CameraImageGraphic(graphicOverlay, originalCameraImage));
               }
+
+
+
+              //해당부분이 사람인거/다른데이터 그려주는부분
               VisionProcessorBase.this.onSuccess(results, graphicOverlay);
+
+              //해당 부분에서 프레임이나 그런거 넣어주네
+              /*
               if (!PreferenceUtils.shouldHideDetectionInfo(graphicOverlay.getContext())) {
                 graphicOverlay.add(
                     new InferenceInfoGraphic(
@@ -338,6 +349,7 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
                         currentDetectorLatencyMs,
                         shouldShowFps ? framesPerSecond : null));
               }
+              */
               graphicOverlay.postInvalidate();
             })
         .addOnFailureListener(

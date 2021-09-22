@@ -16,13 +16,18 @@
 
 package com.google.mlkit.vision.demo.java.posedetector.classification;
 
+import static java.lang.Math.round;
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.ProgressBar;
+
 import androidx.annotation.WorkerThread;
 import com.google.common.base.Preconditions;
+import com.google.mlkit.vision.demo.R;
 import com.google.mlkit.vision.pose.Pose;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +35,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import com.google.mlkit.vision.demo.java.MyGlobal;
 
 /**
  * Accepts a stream of {@link Pose} for classification and Rep counting.
@@ -47,7 +53,9 @@ public class PoseClassifierProcessor {
   private static final String KNEEL_CLASS = "kneel_up";
   private static final String STOMACH = "stomach";
 
-  //운동 종류가 바뀔떄 이부분을 바꿔서 해주면 될것같음 static선언 ㄴㄴ
+
+
+  //운동 종류가 바뀔떄 이부분을 바꿔서 해주면 될것같음
   private static String[] POSE_CLASSES = {
           KNEEL_CLASS
     //PUSHUPS_CLASS, SQUATS_CLASS
@@ -106,6 +114,9 @@ public class PoseClassifierProcessor {
    * 0: PoseClass : X reps
    * 1: PoseClass : [0.0-1.0] confidence
    */
+
+
+  //해당부분에서 이미지 결과처리
   @WorkerThread
   public List<String> getPoseResult(Pose pose) {
     Preconditions.checkState(Looper.myLooper() != Looper.getMainLooper());
@@ -126,12 +137,18 @@ public class PoseClassifierProcessor {
       for (RepetitionCounter repCounter : repCounters) {
         int repsBefore = repCounter.getNumRepeats();
         int repsAfter = repCounter.addClassificationResult(classification);
-        if (repsAfter > repsBefore) {
+
+        if (
+                //repsAfter > repsBefore
+                //항상 보이도록
+                true
+        ) {
           // Play a fun beep when rep counter updates.
           ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 100);
           tg.startTone(ToneGenerator.TONE_PROP_BEEP);
           lastRepResult = String.format(
-              Locale.US, "%s : %d reps", repCounter.getClassName(), repsAfter);
+              //Locale.US, "%s : %d reps", repCounter.getClassName(), repsAfter);
+                  Locale.US, "%s : %d reps", "횟수", repsAfter);
           break;
         }
       }
@@ -148,6 +165,14 @@ public class PoseClassifierProcessor {
           classification.getClassConfidence(maxConfidenceClass)
               / poseClassifier.confidenceRange());
       result.add(maxConfidenceClassResult);
+
+      MyGlobal.getInstance().setREP(
+              classification.getClassConfidence(maxConfidenceClass)
+              / poseClassifier.confidenceRange()
+      );
+      result.add(String.format("%d 만큼 되고있다",MyGlobal.getInstance().getREP()));
+
+      result.add("뿅뾰로뿅뿅뿅");
     }
 
     return result;

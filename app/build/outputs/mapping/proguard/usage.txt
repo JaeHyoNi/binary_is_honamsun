@@ -17803,12 +17803,10 @@ com.google.mlkit.vision.demo.CameraXViewModel:
 com.google.mlkit.vision.demo.GraphicOverlay$Graphic:
     public android.content.Context getApplicationContext()
     public boolean isImageFlipped()
+    public void postInvalidate()
 com.google.mlkit.vision.demo.GraphicOverlay:
     public void remove(com.google.mlkit.vision.demo.GraphicOverlay$Graphic)
-com.google.mlkit.vision.demo.InferenceInfoGraphic:
-    private static final int TEXT_COLOR
-    private static final float TEXT_SIZE
-    public void <init>(com.google.mlkit.vision.demo.GraphicOverlay)
+com.google.mlkit.vision.demo.InferenceInfoGraphic
 com.google.mlkit.vision.demo.R$anim
 com.google.mlkit.vision.demo.R$array
 com.google.mlkit.vision.demo.R$attr
@@ -17838,6 +17836,16 @@ com.google.mlkit.vision.demo.java.CameraXLivePreviewActivity:
 com.google.mlkit.vision.demo.java.ChooserActivity:
     private static final int PERMISSION_REQUESTS
     private static final java.lang.String TAG
+com.google.mlkit.vision.demo.java.MyGlobal:
+    private java.lang.String Exercise
+    private int REST
+    private int SET
+    public java.lang.String getExercise()
+    public int getREST()
+    public int getSET()
+    public void setExercise(java.lang.String)
+    public void setREST(int)
+    public void setSET(int)
 com.google.mlkit.vision.demo.java.VisionProcessorBase:
     protected static final java.lang.String MANUAL_TESTING_LOG
     private static final java.lang.String TAG
@@ -17861,6 +17869,9 @@ com.google.mlkit.vision.demo.java.posedetector.PoseGraphic:
     private static final float IN_FRAME_LIKELIHOOD_TEXT_SIZE
     private static final float POSE_CLASSIFICATION_TEXT_SIZE
     private static final float STROKE_WIDTH
+com.google.mlkit.vision.demo.java.posedetector.classification.ClassificationResult:
+    public java.lang.String getAllConfidence()
+    public java.util.Map justreturn()
 com.google.mlkit.vision.demo.java.posedetector.classification.EMASmoothing:
     private static final float DEFAULT_ALPHA
     private static final int DEFAULT_WINDOW_SIZE
@@ -17873,6 +17884,7 @@ com.google.mlkit.vision.demo.java.posedetector.classification.PoseClassifierProc
     private static final java.lang.String POSE_SAMPLES_FILE
     private static final java.lang.String PUSHUPS_CLASS
     private static final java.lang.String SQUATS_CLASS
+    private static final java.lang.String STOMACH
     private static final java.lang.String TAG
 com.google.mlkit.vision.demo.java.posedetector.classification.PoseEmbedding:
     private static final float TORSO_MULTIPLIER
@@ -17885,6 +17897,7 @@ com.google.mlkit.vision.demo.java.posedetector.classification.PoseSample:
 com.google.mlkit.vision.demo.java.posedetector.classification.RepetitionCounter:
     private static final float DEFAULT_ENTER_THRESHOLD
     private static final float DEFAULT_EXIT_THRESHOLD
+    public java.lang.String getClassName()
 com.google.mlkit.vision.demo.java.posedetector.classification.Utils:
     private void <init>()
     public static com.google.mlkit.vision.common.PointF3D add(com.google.mlkit.vision.common.PointF3D,com.google.mlkit.vision.common.PointF3D)
@@ -17904,6 +17917,7 @@ com.google.mlkit.vision.demo.preference.PreferenceUtils:
     public static com.google.mlkit.vision.objects.defaults.ObjectDetectorOptions getObjectDetectorOptionsForStillImage(android.content.Context)
     public static com.google.mlkit.vision.pose.PoseDetectorOptionsBase getPoseDetectorOptionsForStillImage(android.content.Context)
     public static boolean shouldGroupRecognizedTextInBlocks(android.content.Context)
+    public static boolean shouldHideDetectionInfo(android.content.Context)
     public static boolean shouldSegmentationEnableRawSizeMask(android.content.Context)
     public static boolean shouldShowPoseDetectionInFrameLikelihoodStillImage(android.content.Context)
 com.google.mlkit.vision.demo.preference.SettingsActivity:

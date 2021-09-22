@@ -71,11 +71,4 @@
         android:summary="@string/pref_summary_pose_detector_run_classification"/>
   </PreferenceCategory>
 
-  <PreferenceCategory android:title="@string/pref_category_segmentation">
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/pref_key_segmentation_raw_size_mask"
-        android:persistent="true"
-        android:title="@string/pref_title_segmentation_raw_size_mask"/>
-  </PreferenceCategory>
 </PreferenceScreen>

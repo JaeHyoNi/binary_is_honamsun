@@ -204,8 +204,8 @@ public class PoseGraphic extends Graphic {
     drawLine(canvas, rightHeel, rightFootIndex, rightPaint);
 
     //custom
-    drawLine(canvas, leftHip,leftAnkle,leftPaint);
-    drawLine(canvas, rightHip,rightAnkle,rightPaint);
+    //drawLine(canvas, leftHip,leftAnkle,leftPaint);
+    //drawLine(canvas, rightHip,rightAnkle,rightPaint);
 
     // Draw inFrameLikelihood for all points
     /*

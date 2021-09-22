@@ -44,11 +44,14 @@ public class ClassificationResult {
   }
 
   public String getMaxConfidenceClass() {
+    System.out.println(classConfidences.entrySet());
     return max(
         classConfidences.entrySet(),
         (entry1, entry2) -> (int) (entry1.getValue() - entry2.getValue()))
         .getKey();
   }
+  //확률 제공 함수
+  public String getAllConfidence() {return classConfidences.toString();}
 
   public void incrementClassConfidence(String className) {
     classConfidences.put(className,
