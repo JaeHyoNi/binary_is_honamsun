@@ -17869,6 +17869,7 @@ com.google.mlkit.vision.demo.java.posedetector.classification.PoseClassifier:
     private static final int MEAN_DISTANCE_TOP_K
     private static final java.lang.String TAG
 com.google.mlkit.vision.demo.java.posedetector.classification.PoseClassifierProcessor:
+    private static final java.lang.String KNEEL_CLASS
     private static final java.lang.String POSE_SAMPLES_FILE
     private static final java.lang.String PUSHUPS_CLASS
     private static final java.lang.String SQUATS_CLASS

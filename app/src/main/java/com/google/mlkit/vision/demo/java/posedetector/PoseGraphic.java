@@ -83,6 +83,7 @@ public class PoseGraphic extends Graphic {
     rightPaint.setStrokeWidth(STROKE_WIDTH);
     rightPaint.setColor(Color.YELLOW);
   }
+  //각도 직접구해주는 함수
   static float getAngle(PoseLandmark firstPoint, PoseLandmark midPoint, PoseLandmark lastPoint) {
     double result =
             Math.toDegrees(

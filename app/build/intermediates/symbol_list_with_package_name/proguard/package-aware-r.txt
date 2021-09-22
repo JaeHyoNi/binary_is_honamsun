@@ -857,7 +857,6 @@ drawable googleg_standard_color_18
 drawable ic_settings_white_24dp
 drawable ic_switch_camera_white_48dp
 drawable ic_switch_camera_white_48dp_inset
-drawable list_item_background
 drawable logo_mlkit
 drawable notification_action_background
 drawable notification_bg

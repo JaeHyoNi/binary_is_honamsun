@@ -856,7 +856,6 @@ int drawable googleg_standard_color_18 0x7f070072
 int drawable ic_settings_white_24dp 0x7f070073
 int drawable ic_switch_camera_white_48dp 0x7f070074
 int drawable ic_switch_camera_white_48dp_inset 0x7f070075
-int drawable list_item_background 0x7f070076
 int drawable logo_mlkit 0x7f070077
 int drawable notification_action_background 0x7f070078
 int drawable notification_bg 0x7f070079

@@ -36,16 +36,23 @@ import java.util.Locale;
  */
 public class PoseClassifierProcessor {
   private static final String TAG = "PoseClassifierProcessor";
-  private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
+  //private static final String POSE_SAMPLES_FILE = "pose/fitness_pose_samples.csv";
+  private static final String POSE_SAMPLES_FILE = "pose/kneel_up.csv";
 
   // Specify classes for which we want rep counting.
   // These are the labels in the given {@code POSE_SAMPLES_FILE}. You can set your own class labels
   // for your pose samples.
   private static final String PUSHUPS_CLASS = "pushups_down";
   private static final String SQUATS_CLASS = "squats_down";
-  private static final String[] POSE_CLASSES = {
-    PUSHUPS_CLASS, SQUATS_CLASS
+  private static final String KNEEL_CLASS = "kneel_up";
+  private static final String STOMACH = "stomach";
+
+  //운동 종류가 바뀔떄 이부분을 바꿔서 해주면 될것같음 static선언 ㄴㄴ
+  private static String[] POSE_CLASSES = {
+          KNEEL_CLASS
+    //PUSHUPS_CLASS, SQUATS_CLASS
   };
+
 
   private final boolean isStreamMode;
 
