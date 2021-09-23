@@ -1063,7 +1063,6 @@ int id position 0x7f0800bc
 int id postLayout 0x7f0800bd
 int id preview_view 0x7f0800be
 int id progress 0x7f0800bf
-int id progressBar16 0x7f080118
 int id progress_circular 0x7f0800c0
 int id progress_horizontal 0x7f0800c1
 int id radio 0x7f0800c2

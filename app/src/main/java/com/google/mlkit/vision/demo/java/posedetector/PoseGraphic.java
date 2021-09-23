@@ -31,7 +31,7 @@ import com.google.mlkit.vision.pose.Pose;
 import com.google.mlkit.vision.pose.PoseLandmark;
 import java.util.List;
 import java.util.Locale;
-
+import com.google.mlkit.vision.demo.java.MyGlobal;
 /** Draw the detected pose in preview. */
 public class PoseGraphic extends Graphic {
 
@@ -52,6 +52,8 @@ public class PoseGraphic extends Graphic {
   private final Paint leftPaint;
   private final Paint rightPaint;
   private final Paint whitePaint;
+
+
 
   PoseGraphic(
       GraphicOverlay overlay,
@@ -83,6 +85,7 @@ public class PoseGraphic extends Graphic {
     rightPaint.setStrokeWidth(STROKE_WIDTH);
     rightPaint.setColor(Color.YELLOW);
   }
+
   //각도 직접구해주는 함수
   static float getAngle(PoseLandmark firstPoint, PoseLandmark midPoint, PoseLandmark lastPoint) {
     double result =
@@ -108,6 +111,7 @@ public class PoseGraphic extends Graphic {
 
     // Draw pose classification text.
     float classificationX = POSE_CLASSIFICATION_TEXT_SIZE * 0.5f;
+    System.out.println(" 사이즈 계산하는듯 : "+POSE_CLASSIFICATION_TEXT_SIZE);
     for (int i = 0; i < poseClassification.size(); i++) {
       float classificationY = (canvas.getHeight() - POSE_CLASSIFICATION_TEXT_SIZE * 1.5f
           * (poseClassification.size() - i));
@@ -116,9 +120,46 @@ public class PoseGraphic extends Graphic {
           classificationX,
           classificationY,
           classificationTextPaint);
+      System.out.printf("입력정보 :  [x : %f  / y : %f  / string : %s\n" , classificationX,classificationY,poseClassification.get(i));
     }
 
+    //draw rating bar
+    float fullX = canvas.getWidth();
+    float fullY = canvas.getHeight();
+
+    float X = fullX/12;
+    float Y = fullY/10;
+
+    float leftupX = fullX - fullX/12*2;
+    float leftupY = fullY - fullY/10*9;
+    float rightdownX = leftupX + fullX/12;
+    float rightdownY = fullY - fullY/10*2;
+
+    Paint rate = new Paint();
+    Paint full = new Paint();
+    full.setColor(Color.WHITE);
+    rate.setColor(Color.GREEN);
+    //canvas.drawRect(leftupX,leftupY,rightdownX,rightdownY,rate);
+
+
+    float barHeight = leftupY - rightdownY;
+    barHeight = barHeight * MyGlobal.getInstance().getREP()/100;
+    canvas.drawRect(leftupX ,leftupY, rightdownX,rightdownY,full);
+    canvas.drawRect(leftupX ,rightdownY + barHeight, rightdownX,rightdownY,rate);
+
+
+    //draw rating bar lines
+    /*
+    canvas.drawLine( leftupX,leftupY,leftupX,leftupY+7*Y,rate);
+    canvas.drawLine(leftupX,leftupY , leftupX + X,leftupY,rate);
+    canvas.drawLine(rightdownX,rightdownY,rightdownX-X,rightdownY,rate);
+    canvas.drawLine(rightdownX,rightdownY,rightdownX,rightdownY-7*Y,rate);
+    */
+
+
+
     // Draw all the points
+
     for (PoseLandmark landmark : landmarks) {
       drawPoint(canvas, landmark, whitePaint);
       if (visualizeZ && rescaleZForVisualization) {
@@ -202,6 +243,8 @@ public class PoseGraphic extends Graphic {
     drawLine(canvas, rightIndex, rightPinky, rightPaint);
     drawLine(canvas, rightAnkle, rightHeel, rightPaint);
     drawLine(canvas, rightHeel, rightFootIndex, rightPaint);
+
+
 
     //custom
     //drawLine(canvas, leftHip,leftAnkle,leftPaint);

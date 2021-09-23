@@ -339,8 +339,9 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
               //해당부분이 사람인거/다른데이터 그려주는부분
               VisionProcessorBase.this.onSuccess(results, graphicOverlay);
 
+
               //해당 부분에서 프레임이나 그런거 넣어주네
-              /*
+
               if (!PreferenceUtils.shouldHideDetectionInfo(graphicOverlay.getContext())) {
                 graphicOverlay.add(
                     new InferenceInfoGraphic(
@@ -349,7 +350,7 @@ public abstract class VisionProcessorBase<T> implements VisionImageProcessor {
                         currentDetectorLatencyMs,
                         shouldShowFps ? framesPerSecond : null));
               }
-              */
+
               graphicOverlay.postInvalidate();
             })
         .addOnFailureListener(
