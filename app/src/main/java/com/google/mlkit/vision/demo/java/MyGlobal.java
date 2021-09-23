@@ -30,7 +30,7 @@ public class MyGlobal {
     public void setSET(int set){ this.SET = set; }
     public void setREP(float rep){
 
-        this.REP = (int)(rep);
+        this.REP = (int)rep*10;
     }
     public void setREST(int rest){ this.REST = rest; }
 

@@ -87,6 +87,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
   @Nullable private VisionImageProcessor imageProcessor;
   private boolean needUpdateGraphicOverlayImageSourceInfo;
 
+  private ProgressBar progress;
 
 
   private String selectedModel = POSE_DETECTION;
@@ -115,7 +116,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
     setContentView(R.layout.activity_vision_camerax_live_preview);
 
-
+    this.progress = (ProgressBar) findViewById(R.id.progressBar);
 
     previewView = findViewById(R.id.preview_view);
     if (previewView == null) {
@@ -272,7 +273,6 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
 
   //private에서 바꿈
   private void bindAnalysisUseCase() {
-    //ProgressBar progress = (ProgressBar) findViewById(R.id.progress);
     if (cameraProvider == null) {
       return;
     }
@@ -352,7 +352,7 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
           try {
             //processImageProxy() -> requestDetectImage() -> processImageProxy() -> detectInImage() -> getPoseResult() -> 문자열 생성
             imageProcessor.processImageProxy(imageProxy, graphicOverlay);
-            //progress.setProgress(MyGlobal.getInstance().getREP());
+            this.progress.setProgress(MyGlobal.getInstance().getREP());
           } catch (MlKitException e) {
             Log.e(TAG, "Failed to process image. Error: " + e.getLocalizedMessage());
             Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT)

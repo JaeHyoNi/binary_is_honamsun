@@ -27,7 +27,7 @@
       app:layout_constraintTop_toTopOf="@id/preview_view" />
 
   <ProgressBar
-      android:id="@+id/progressBar16"
+      android:id="@+id/progressBar"
       style="?android:attr/progressBarStyleHorizontal"
       android:layout_width="409dp"
       android:layout_height="159dp"

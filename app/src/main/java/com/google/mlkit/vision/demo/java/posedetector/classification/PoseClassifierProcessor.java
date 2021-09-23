@@ -166,16 +166,28 @@ public class PoseClassifierProcessor {
               / poseClassifier.confidenceRange());
       result.add(maxConfidenceClassResult);
 
+      result.add("start : " + classification.getClassConfidence("kneel_down"));
+      result.add("end : " + classification.getClassConfidence("kneel_up"));
       MyGlobal.getInstance().setREP(
               classification.getClassConfidence(maxConfidenceClass)
               / poseClassifier.confidenceRange()
       );
-      result.add(String.format("%d 만큼 되고있다",MyGlobal.getInstance().getREP()));
 
+      result.add(String.format("%d 만큼 되고있다",MyGlobal.getInstance().getREP()));
+      System.out.println("sex" + classification.getAllConfidence());
+      System.out.println(classification.getAllClasses());
+      System.out.println(classification.getClassConfidence("kneel_up"));
+      System.out.println(classification.getClassConfidence("kneel_down"));
+      String[] con = classification.getAllConfidence().split(",");
+      rating(classification);
       result.add("뿅뾰로뿅뿅뿅");
     }
 
     return result;
+  }
+
+  public void rating(ClassificationResult temp){
+    MyGlobal.getInstance().setREP(temp.getClassConfidence("kneel_up"));
   }
 
 }
