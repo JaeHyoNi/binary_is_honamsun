@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\kimqh\\AndroidStudioProjects\\Optimized_MLKIT\\app\\build\\intermediates\\incremental\\mergeProguardResources\\merged.dir\\values-v25\\values-v25.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\kimqh\\.gradle\\caches\\transforms-3\\60a7e71dee565aa989609164ec326a3d\\transformed\\appcompat-1.2.0\\res\\values-v25\\values-v25.xml",
+                    "source": "C:\\Users\\kimqh\\.gradle\\caches\\transforms-3\\8190198988f5dc1a233e0c21b4a74ad8\\transformed\\appcompat-1.2.0\\res\\values-v25\\values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",

@@ -1,4 +1,4 @@
-#Fri Sep 24 01:06:32 KST 2021
+#Sat Sep 25 20:49:31 KST 2021
 base.0=C\:\\Users\\kimqh\\AndroidStudioProjects\\Optimized_MLKIT\\app\\build\\intermediates\\dex\\proguard\\minifyProguardWithR8\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

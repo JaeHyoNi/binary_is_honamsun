@@ -145,6 +145,10 @@
     </attr>
     <attr format="integer" name="framePosition"/>
     <attr format="dimension" name="height"/>
+    <attr format="enum" name="implementationMode">
+        <enum name="performance" value="0"/>
+        <enum name="compatible" value="1"/>
+    </attr>
     <attr format="boolean" name="isLightTheme"/>
     <attr format="reference" name="layoutDescription"/>
     <attr format="enum" name="layoutDuringTransition">
@@ -3474,6 +3478,7 @@
     </declare-styleable>
     <declare-styleable name="PreviewView">
         <attr name="scaleType"/>
+        <attr name="implementationMode"/>
     </declare-styleable>
     <declare-styleable name="PropertySet"><attr name="android:visibility"/><attr name="visibilityMode"/><attr format="float" name="android:alpha"/><attr name="motionProgress"/><attr name="layout_constraintTag"/></declare-styleable>
     <declare-styleable name="RecycleListView">

@@ -4,7 +4,17 @@
             "outputFile": "C:\\Users\\kimqh\\AndroidStudioProjects\\Optimized_MLKIT\\app\\build\\intermediates\\incremental\\mergeProguardResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\kimqh\\.gradle\\caches\\transforms-3\\60a7e71dee565aa989609164ec326a3d\\transformed\\appcompat-1.2.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\kimqh\\.gradle\\caches\\transforms-3\\d2d82602dbe4e040fb47b7f3d4ad9d83\\transformed\\core-1.3.1\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\kimqh\\.gradle\\caches\\transforms-3\\8190198988f5dc1a233e0c21b4a74ad8\\transformed\\appcompat-1.2.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\kimqh\\.gradle\\caches\\transforms-3\\9ab43258f43b4a688aafb82cc785608a\\transformed\\core-1.3.1\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]
