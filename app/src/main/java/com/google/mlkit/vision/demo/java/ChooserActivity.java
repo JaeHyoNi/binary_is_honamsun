@@ -23,7 +23,6 @@ import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.os.StrictMode;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,7 +35,6 @@ import android.widget.TextView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import androidx.core.content.ContextCompat;
-import com.google.mlkit.vision.demo.BuildConfig;
 import com.google.mlkit.vision.demo.R;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +73,7 @@ public final class ChooserActivity extends AppCompatActivity
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     //쓰레드 설정
+    /*
     if (BuildConfig.DEBUG) {
       StrictMode.setThreadPolicy(
           new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
@@ -85,6 +84,8 @@ public final class ChooserActivity extends AppCompatActivity
               .penaltyLog()
               .build());
     }
+    */
+
     super.onCreate(savedInstanceState);
     Log.d(TAG, "onCreate");
 

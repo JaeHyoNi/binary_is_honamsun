@@ -98,6 +98,12 @@ public final class CameraXLivePreviewActivity extends AppCompatActivity
     super.onCreate(savedInstanceState);
     Log.d(TAG, "onCreate");
 
+    //카메라 권한얻어오는 함수
+    if (!allPermissionsGranted()) {
+      getRuntimePermissions();
+    }
+
+
     if (VERSION.SDK_INT < VERSION_CODES.LOLLIPOP) {
       Toast.makeText(
               getApplicationContext(),

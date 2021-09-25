@@ -23,19 +23,11 @@ android {
             debuggable true
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
-            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro', 'proguard.cfg'
         }
         testBuildType "proguard"
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
-            debuggable false
-        }
-        debug {
-            minifyEnabled false
-            proguardFiles 'proguard-rules.pro'
         }
     }
 
